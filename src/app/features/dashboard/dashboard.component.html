@@ -1,0 +1,104 @@
+<div class="dashboard">
+  <div class="page-header">
+    <h2>Dashboard</h2>
+    <div class="header-actions">
+      <button class="btn-icon"><mat-icon>search</mat-icon></button>
+      <button class="btn-icon badge"><mat-icon>notifications</mat-icon></button>
+      <button class="btn-icon"><mat-icon>add</mat-icon></button>
+    </div>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-grid">
+    @for (stat of stats; track stat.label) {
+      <div class="stat-card">
+        <span class="stat-label">{{ stat.label }}</span>
+        <span class="stat-value">{{ stat.value }}</span>
+        <span class="stat-sub" [class]="stat.subClass">{{ stat.sub }}</span>
+      </div>
+    }
+  </div>
+
+  <!-- Kanban + Side Panel -->
+  <div class="content-grid">
+    <!-- Kanban Board -->
+    <div class="kanban-section">
+      <div class="section-header">
+        <h3>Kanban board</h3>
+        <button class="btn-primary">
+          <mat-icon>add</mat-icon> งานใหม่
+        </button>
+      </div>
+
+      <div class="kanban-board">
+        @for (col of columns; track col.title) {
+          <div class="kanban-col">
+            <div class="col-header">
+              <span class="col-title">{{ col.title }}</span>
+              <span class="col-count">{{ col.count }}</span>
+            </div>
+
+            <div class="task-list">
+              @for (task of col.tasks; track task.title) {
+                <div class="task-card">
+                  <p class="task-title">{{ task.title }}</p>
+                  <div class="task-footer">
+                    <div class="tags">
+                      @for (tag of task.tags; track tag.label) {
+                        <span class="tag" [class]="'tag-' + tag.color">{{ tag.label }}</span>
+                      }
+                    </div>
+                    <div class="task-avatar">{{ task.assignee }}</div>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Side Panel -->
+    <div class="side-panel">
+      <!-- Member Performance -->
+      <div class="panel-card">
+        <h4>ผลงานสมาชิก</h4>
+        <div class="member-list">
+          @for (m of members; track m.name) {
+            <div class="member-row">
+              <div class="member-avatar">{{ m.initials }}</div>
+              <div class="member-info">
+                <div class="member-name-row">
+                  <span>{{ m.name }}</span>
+                  <span class="member-pct">{{ m.progress }}%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" [style.width.%]="m.progress" [style.background]="m.color"></div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="panel-card">
+        <div class="panel-card-header">
+          <h4>แจ้งเตือนล่าสุด</h4>
+          <button class="btn-link">ดูทั้งหมด</button>
+        </div>
+        <div class="notif-list">
+          @for (n of notifications; track n.message) {
+            <div class="notif-item">
+              <div class="notif-avatar" [class]="'notif-' + n.type">{{ n.initials }}</div>
+              <div class="notif-body">
+                <p>{{ n.message }}</p>
+                <span>{{ n.time }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
