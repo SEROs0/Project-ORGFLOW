@@ -14,5 +14,5 @@ let emp: Employee = {
     department: "IT",
     age: myAge
 }
- 
+
 console.log(emp)

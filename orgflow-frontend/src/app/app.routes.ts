@@ -6,18 +6,18 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () =>
-      import('./features/auth/login/login.component').then((m) => m.LoginComponent),
+      import('./features/auth/login/login.component').then(m => m.LoginComponent),
   },
   {
     path: '',
     loadComponent: () =>
-      import('./layout/layout.component').then((m) => m.LayoutComponent),
+      import('./layout/layout.component').then(m => m.LayoutComponent),
     canActivate: [authGuard],
     children: [
       {
         path: 'dashboard',
         loadComponent: () =>
-          import('./features/dashboard/dashboard.component').then((m) => m.DashboardComponent),
+          import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent),
       },
     ],
   },

@@ -1,44 +1,26 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# ===== Frontend (Angular) =====
+orgflow-frontend/node_modules/
+orgflow-frontend/dist/
+orgflow-frontend/.angular/
+orgflow-frontend/.angular/cache/
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+# ===== Backend (Python) =====
+orgflow-backend/venv/
+orgflow-backend/__pycache__/
+orgflow-backend/**/__pycache__/
+orgflow-backend/*.pyc
+orgflow-backend/.env
 
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
-
-# IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# Visual Studio Code
+# ===== IDEs =====
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/mcp.json
-.history/*
+.idea/
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
-__screenshots__/
-
-# System files
+# ===== System =====
 .DS_Store
 Thumbs.db
+*.log
