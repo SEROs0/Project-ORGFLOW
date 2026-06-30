@@ -1,0 +1,26 @@
+# ===== Frontend (Angular) =====
+orgflow-frontend/node_modules/
+orgflow-frontend/dist/
+orgflow-frontend/.angular/
+orgflow-frontend/.angular/cache/
+
+# ===== Backend (Python) =====
+orgflow-backend/venv/
+orgflow-backend/__pycache__/
+orgflow-backend/**/__pycache__/
+orgflow-backend/*.pyc
+orgflow-backend/.env
+
+# ===== IDEs =====
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+.idea/
+
+# ===== System =====
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,61 @@
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-header">
+      <mat-icon class="logo-icon">account_tree</mat-icon>
+      <h1>OrgFlow</h1>
+      <p>เข้าสู่ระบบเพื่อใช้งาน</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="login-form">
+      <div class="field">
+        <label>อีเมล</label>
+        <div class="input-wrap">
+          <mat-icon>email</mat-icon>
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="email@example.com"
+            autocomplete="email"
+          />
+        </div>
+        @if (form.controls.email.invalid && form.controls.email.touched) {
+          <span class="field-error">กรุณากรอกอีเมลให้ถูกต้อง</span>
+        }
+      </div>
+
+      <div class="field">
+        <label>รหัสผ่าน</label>
+        <div class="input-wrap">
+          <mat-icon>lock</mat-icon>
+          <input
+            [type]="showPassword() ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="รหัสผ่าน"
+            autocomplete="current-password"
+          />
+          <button type="button" class="toggle-pw" (click)="showPassword.set(!showPassword())">
+            <mat-icon>{{ showPassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </div>
+        @if (form.controls.password.invalid && form.controls.password.touched) {
+          <span class="field-error">รหัสผ่านอย่างน้อย 6 ตัวอักษร</span>
+        }
+      </div>
+
+      @if (error()) {
+        <div class="error-banner">
+          <mat-icon>error_outline</mat-icon>
+          {{ error() }}
+        </div>
+      }
+
+      <button type="submit" class="btn-login" [disabled]="loading()">
+        @if (loading()) {
+          <mat-spinner diameter="18" />
+        } @else {
+          เข้าสู่ระบบ
+        }
+      </button>
+    </form>
+  </div>
+</div>
